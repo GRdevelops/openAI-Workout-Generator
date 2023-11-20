@@ -5,6 +5,7 @@ const H3 = styled.h3`
   font-weight: 500;
   margin-top: 3rem;
   margin-bottom: 1rem;
+  text-align: center;
 `
 
 const Paragraph = styled.p`

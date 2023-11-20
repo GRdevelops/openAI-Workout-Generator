@@ -16,7 +16,7 @@ const handleFormSubmit = async (userInput, setWorkoutData) => {
             }
       }`;
 
-    const response = await axios.post("http://localhost:8000/completions", {
+    const response = await axios.post("http://localhost:8000/generate-workout", {
       message: prompt,
     });
 

@@ -1,12 +1,13 @@
 import styled from "@emotion/styled";
 
 const H1 = styled.h1`
-  font-size: 4rem;
+  font-size: 4.5rem;
   font-weight: 500;
   margin: 6rem auto;
   letter-spacing: -0.02em;
   text-align: center;
   max-width: 20ch;
+  line-height: 1.2;
 `;
 
 

@@ -1,25 +1,21 @@
 import { useState, useEffect } from "react";
 import { css } from '@emotion/react';
 import styled from "@emotion/styled";
-import checkmark from '../assets/checkmark2.svg';
+import styles from './theme.js';
+import checkmark from '../assets/checkmark.svg';
+
+// Components
+import Slider from './WorkoutForm/Slider';
 
 
 // Styles
-const formWidth = '20rem';
-const verticalSpace = '1.5rem';
-const inputPadding = '.8rem .5rem';
-const fontSize = '1rem';
-const inputFontSize = '0.925rem';
-const fontFamily = 'Arial';
-const inputBorder = '2px solid gray';
-const inputBorderRadius = '0.5rem'
 const customScrollbar = css`
   &::-webkit-scrollbar {
     width: 8px;
   }
 
   &::-webkit-scrollbar-track {
-    background: #3b3b3b;
+    background: ${styles.inputBackgroundColor};
   }
 
   &::-webkit-scrollbar-thumb {
@@ -32,35 +28,34 @@ const customScrollbar = css`
   }
 
   &::-webkit-scrollbar-corner {
-    background-color: #3b3b3b; 
+    background-color: ${styles.inputBackgroundColor}; 
   }
 
   &::-webkit-resizer {
-    background-color: #3b3b3b;
+    background-color: ${styles.inputBackgroundColor};
   }
 `
 
 const Form = styled.form`
-  font-size: ${fontSize};
+  font-size: ${styles.fontSize};
   margin: 0 auto;
-  max-width: ${formWidth};
+  max-width: ${styles.formWidth};
   display: flex;
   flex-direction: column;
 `
 
 const Label = styled.label`
   margin-bottom: .5rem;
-  font-family: 
 `;
 
 const TextArea = styled.textarea`
-  font-family: ${fontFamily};
-  font-size: ${inputFontSize};
-  margin-bottom: ${verticalSpace};
-  padding: ${inputPadding};
+  font-family: ${styles.fontFamily};
+  font-size: ${styles.inputFontSize};
+  margin-bottom: ${styles.verticalSpace};
+  padding: ${styles.inputPadding};
   min-height: 5rem;
-  border: ${inputBorder};
-  border-radius: ${inputBorderRadius};
+  border: ${styles.inputBorder};
+  border-radius: ${styles.inputBorderRadius};
 
   &::placeholder {
     vertical-align: top;
@@ -71,43 +66,43 @@ const TextArea = styled.textarea`
 `;
 
 const Input = styled.input`
-  font-family: ${fontFamily};
-  font-size: ${inputFontSize};
-  margin-bottom: ${verticalSpace};
-  padding: ${inputPadding};
-  border: ${inputBorder};
-  border-radius: ${inputBorderRadius};
+  font-family: ${styles.fontFamily};
+  font-size: ${styles.inputFontSize};
+  margin-bottom: ${styles.verticalSpace};
+  padding: ${styles.inputPadding};
+  border: ${styles.inputBorder};
+  border-radius: ${styles.inputBorderRadius};
 `;
 
 const Select = styled.select`
-  font-family: ${fontFamily};
-  font-size: ${inputFontSize};
-  margin-bottom: ${verticalSpace};
-  padding: ${inputPadding};
-  border: ${inputBorder};
-  border-radius: ${inputBorderRadius};
+  font-family: ${styles.fontFamily};
+  font-size: ${styles.inputFontSize};
+  margin-bottom: ${styles.verticalSpace};
+  padding: ${styles.inputPadding};
+  border: ${styles.inputBorder};
+  border-radius: ${styles.inputBorderRadius};
 `;
 
 const Radio = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: ${verticalSpace};
+  margin-bottom: ${styles.verticalSpace};
 `;
 
 const Dropdown = styled.div`
-  width: 100%;
-  max-width: ${formWidth};
+  width: 80%;
+  max-width: calc(${styles.formWidth} + 5%);
   max-height: 100vh;
   overflow: scroll;
-  background-color: #3b3b3b;
+  background-color: ${styles.inputBackgroundColor};
   position: fixed;
   top: 0%;
   left: 50%;
   transform: translatex(-50%);
   z-index: 99;
-  border-radius: ${inputBorderRadius};
-  ${customScrollbar};
+  border-radius: ${styles.inputBorderRadius};
+  ${styles.customScrollbar};
 `;
 
 const CheckboxWrapper = styled.div`
@@ -135,11 +130,12 @@ const Button = styled.button`
 function WorkoutForm({ onSubmit }) {
   const [userData, setUserData] = useState({
     gender: 'male',
-    unit: 'kg',
-    weight: 80,
+    weightUnit: 'kg',
+    weight: 70,
     fitnessLevel: 'beginner',
     equipment: ['All'],
-    goal: 'lose-weight',
+    daysPerWeek: 3,
+    goal: 'build-muscle',
     injuries: '',
     preferencies: ''
   })
@@ -176,20 +172,23 @@ function WorkoutForm({ onSubmit }) {
   };
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    // Close dropdown if you click outside or press "esc"
+    const handleDropdownState = (event) => {
       const dropdownElement = document.getElementById('dropdown');
-      if (dropdownElement && !dropdownElement.contains(event.target)) {
+      if (dropdownElement && !dropdownElement.contains(event.target) || event.key === "Escape" || event.keyCode === 27) {
         setIsDropdownOpen(false);
       }
     };
   
     if (isDropdownOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('mousedown', handleDropdownState);
+      document.addEventListener('keydown', handleDropdownState)
       document.body.style.overflow = 'hidden';
     }
   
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('mousedown', handleDropdownState);
+      document.removeEventListener("keydown", handleDropdownState);
       document.body.style.overflow = '';
     };
   }, [isDropdownOpen]);
@@ -204,8 +203,11 @@ function WorkoutForm({ onSubmit }) {
   // };
 
   // Implement custom dropdowns (for each goal: emoji + goal + description)
-  
 
+  const handleSliderChange = (event) => {
+    setUserData({ ...userData, daysPerWeek: event.target.value });
+  };
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("Submitted:", userData);
@@ -228,10 +230,10 @@ function WorkoutForm({ onSubmit }) {
       <Radio>
         <label>Unit:</label>
         <label htmlFor="kg" css={css`cursor: pointer`}>
-          <input type="radio" id="kg" name="unit" value="kg" checked={userData.unit === 'kg'} onChange={() => setUserData({...userData, unit: 'kg'})} /> kg
+          <input type="radio" id="kg" name="weightUnit" value="kg" checked={userData.weightUnit === 'kg'} onChange={() => setUserData({...userData, weightUnit: 'kg'})} /> kg
         </label>
         <label htmlFor='lbs' css={css`cursor: pointer`}>
-          <input type="radio" id="lbs" name="unit" value="lbs" checked={userData.unit === 'lbs'} onChange={() => setUserData({...userData, unit: 'lbs'})} /> lbs
+          <input type="radio" id="lbs" name="weightUnit" value="lbs" checked={userData.weightUnit === 'lbs'} onChange={() => setUserData({...userData, weightUnit: 'lbs'})} /> lbs
         </label>
       </Radio>
 
@@ -247,9 +249,9 @@ function WorkoutForm({ onSubmit }) {
 
       <Label htmlFor="fitness-goal">Goal:</Label>
       <Select id="fitness-goal" name="fitness-goal" onChange={(e) => setUserData({...userData, goal: e.target.value})}>
+        <option value="build-muscle">Gain Muscle</option>
         <option value="lose-fat">Get Leaner</option>
         <option value="increase-strength">Boost Strength</option>
-        <option value="build-muscle">Gain Muscle</option>
         <option value="maintenance">Stay Fit</option>
         <option value="improve-endurance">Enhance Stamina</option>
       </Select>
@@ -257,13 +259,13 @@ function WorkoutForm({ onSubmit }) {
       <Label>Select Equipment:</Label>
       <div
         css={css`
-          font-size: ${inputFontSize};
+          font-size: ${styles.inputFontSize};
           cursor: pointer;
-          background-color: #3b3b3b;
-          padding: ${inputPadding};
-          border: ${inputBorder};
-          border-radius: ${inputBorderRadius};
-          margin-bottom: ${verticalSpace};
+          background-color: ${styles.inputBackgroundColor};
+          padding: ${styles.inputPadding};
+          border: ${styles.inputBorder};
+          border-radius: ${styles.inputBorderRadius};
+          margin-bottom: ${styles.verticalSpace};
         `}
         onClick={toggleDropdown}>
         {userData.equipment.join(', ')}
@@ -307,6 +309,14 @@ function WorkoutForm({ onSubmit }) {
           ))}
         </Dropdown>
       )}
+
+      <Label>How many days can you workout per week?</Label>
+      <Slider
+        min={1}
+        max={7}
+        value={userData.daysPerWeek}
+        onChange={handleSliderChange}
+      />
 
       <Label>Injuries: <span css={css`opacity: .5`}>(optional)</span></Label>
       <TextArea

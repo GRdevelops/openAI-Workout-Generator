@@ -14,8 +14,8 @@ app.post("/generate-workout", async (req, res) => {
     const response = await axios.post("https://api.openai.com/v1/chat/completions", {
       model: "gpt-3.5-turbo-1106",
       messages: [{ role: "user", content: req.body.message }],
-      temperature: 0.7,
-      max_tokens: 50,
+      temperature: 0.8,
+      max_tokens: 500,
     }, {
       headers: {
         Authorization: `Bearer ${process.env.VITE_OPENAI_API_KEY}`,

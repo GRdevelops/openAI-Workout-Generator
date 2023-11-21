@@ -12,8 +12,8 @@ import handleFormSubmit from './functions/handleFormSubmit';
 function App() {
   const [workoutData, setWorkoutData] = useState("");
 
-  const handleSubmit = (userInput) => {
-    handleFormSubmit(userInput, setWorkoutData);
+  const handleSubmit = (element) => {
+    handleFormSubmit(element, setWorkoutData);
   };
 
   

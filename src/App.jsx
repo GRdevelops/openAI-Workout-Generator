@@ -1,30 +1,29 @@
-import { useState } from "react";
-import "./App.css";
+import { useState } from 'react';
+import './styles/App.css';
 
 // Components
-import WorkoutForm from "./components/WorkoutForm";
-import Heading from "./components/Heading";
-import WorkoutResult from "./components/WorkoutResult";
+import WorkoutForm from './components/WorkoutForm';
+import MainHeading from './components/MainHeading';
+import WorkoutResult from './components/WorkoutResult';
 
 // Functions
 import handleFormSubmit from './functions/handleFormSubmit';
 
 function App() {
-  const [workoutData, setWorkoutData] = useState("");
+	const [workoutData, setWorkoutData] = useState('');
+	const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (element) => {
-    handleFormSubmit(element, setWorkoutData);
-  };
+	const handleSubmit = userData => {
+		handleFormSubmit(userData, setWorkoutData, setLoading);
+	};
 
-  
-
-  return (
-    <>
-      <Heading />
-      <WorkoutForm onSubmit={handleSubmit} />
-      <WorkoutResult data={workoutData} />
-    </>
-  );
+	return (
+		<>
+			<MainHeading />
+			<WorkoutForm onSubmit={handleSubmit} />
+			<WorkoutResult isLoading={loading} workoutData={workoutData} />
+		</>
+	);
 }
 
 export default App;

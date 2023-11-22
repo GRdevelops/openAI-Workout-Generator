@@ -1,83 +1,47 @@
-import styled from "@emotion/styled";
-import { css } from '@emotion/react';
+import PulseLoader from 'react-spinners/PulseLoader';
 
 // Components
-import DayTable from './WorkoutResult/DayTable';
+import WorkoutProgram from './WorkoutResult/WorkoutProgram';
 
-const H3 = styled.h3`
-  font-size: 2rem;
-  font-weight: 500;
-  margin-top: 3rem;
-  margin-bottom: 1rem;
-  text-align: center;
-`
+// Styles
+import styled from '@emotion/styled';
 
-const Paragraph = styled.p`
-  max-width: 50ch;
-  margin: 0 auto;
-  line-height: 1.5;
-  text-align: center;
+const H2 = styled.h2`
+	font-size: 2rem;
+	font-weight: 500;
+	margin-top: 6rem;
+	margin-bottom: 1rem;
+	text-align: center;
 `;
 
+const Output = styled.div`
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+`;
 
-function WorkoutResult({ data }) {
+function WorkoutResult({ isLoading, workoutData }) {
+	return (
+		<>
+			<H2>Your workout:</H2>
 
-  data = `{
-    "Monday": {
-      "type": "Full Body",
-      "exercises": {
-        "Squats": "3 x 10",
-        "Push-ups": "3 x max",
-        "Bent-over Rows": "3 x 10",
-        "Plank": "3 x 30 seconds"
-      }
-    },
-    "Wednesday": {
-      "type": "Upper Body",
-      "exercises": {
-        "Bench Press": "3 x 10",
-        "Pull-ups": "3 x max",
-        "Shoulder Press": "3 x 10",
-        "Bicep Curls": "3 x 12",
-        "Tricep Dips": "3 x max"
-      }
-    },
-    "Friday": {
-      "type": "Lower Body",
-      "exercises": {
-        "Deadlifts": "3 x 10",
-        "Lunges": "3 x 10 each leg",
-        "Calf Raises": "3 x 15",
-        "Leg Raises": "3 x 12"
-      }
-    }
-  }`;
-
-  if (data) {
-    try {
-      const parsedData = JSON.parse(data);
-      // console.log(parsedData);
-
-      const renderedDays = Object.keys(parsedData).map((day, index) => (
-        <DayTable key={index} dayName={day} dayObject={parsedData[day]} />
-      ));
-
-      return (
-        <>
-          <H3>Your workout:</H3>
-          {renderedDays}
-        </>
-      )
-    } catch (error) {
-        console.error("Error parsing JSON:", error);
-        return (
-          <>
-            <Paragraph css={css`margin-top: 3rem;`}>Error loading workout data. Invalid format. 😞</Paragraph>
-          </>
-        )
-    }
-
-  }
+			<Output>
+				{isLoading ? (
+					<PulseLoader
+						color='#8378ff'
+						cssOverride={{
+							margin: '10% auto',
+							display: 'flex',
+							justifyContent: 'center',
+						}}
+						speedMultiplier={0.7}
+					/>
+				) : (
+					<WorkoutProgram workoutData={workoutData} />
+				)}
+			</Output>
+		</>
+	);
 }
 
 export default WorkoutResult;

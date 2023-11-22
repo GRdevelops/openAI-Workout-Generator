@@ -1,8 +1,10 @@
 import axios from "axios";
 import { calculateComplitionCost } from "./utilities";
 
-const handleFormSubmit = async (userData, setWorkoutData) => {
+const handleFormSubmit = async (userData, setWorkoutData, setLoading) => {
   try {
+
+    setLoading(true);
 
     const userDataString = JSON.stringify(userData);
     
@@ -40,10 +42,14 @@ const handleFormSubmit = async (userData, setWorkoutData) => {
 
     setWorkoutData(response.data.choices[0].message.content.trim());
 
+    setLoading(false);
+
     // Cost calculation
     calculateComplitionCost(response.data);
+
   } catch (error) {
     console.error("Error:", error);
+    setLoading(false);
   }
 };
 

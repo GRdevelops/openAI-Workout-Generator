@@ -1,40 +1,41 @@
-import { useState, useEffect, useRef  } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import checkmark from '../../assets/checkmark.svg';
 
 // Custom Hook
-import useOutsideClick from '../../functions/useOutsideClicks.js';
+import useOutsideClick from '../../utils/useOutsideClicks.js';
 
 // Styles
 import styles from '../../styles/theme.js';
 
 const SelectElement = styled.div`
-  font-size: ${styles.inputFontSize};
-  cursor: pointer;
-  background-color: ${styles.inputBackgroundColor};
-  padding: ${styles.inputPadding};
-  border: ${styles.inputBorder};
-  border-radius: ${styles.inputBorderRadius};
-  margin-bottom: ${styles.verticalSpace};
+	cursor: pointer;
+	font-size: ${styles.inputFontSize};
+	background-color: ${styles.inputBackgroundColor};
+	padding: ${styles.inputPadding};
+	border: ${styles.inputBorder};
+	border-radius: ${styles.inputBorderRadius};
+	margin-bottom: ${styles.verticalSpace};
+	line-height: 1.3;
 `;
 
 const Choice = styled.div`
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 
-  &:hover {
-    background-color: hsla(0, 0%, 89%, 0.1);
-  }
+	&:hover {
+		background-color: hsla(0, 0%, 89%, 0.1);
+	}
 `;
 
 const Label = styled.label`
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  padding-left: 3rem;
-  z-index: 99;
-  width: 100%;
-  line-height: 1.5;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	padding-left: 3rem;
+	z-index: 99;
+	width: 100%;
+	line-height: 1.5;
 `;
 
 const Dropdown = styled.div`
@@ -68,18 +69,17 @@ const CheckboxWrapper = styled.div`
 	margin-left: 1rem;
 `;
 
-
 function MultiSelection({ choices, statePropertyToChange, userData, setUserData }) {
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef(null);
+	const dropdownRef = useRef(null);
 
 	const toggleDropdown = () => setIsDropdownOpen(prev => !prev);
 
-  const handleChoices = event => {
+	const handleChoices = event => {
 		const value = event.target.value;
 		let newChoices;
 
-    // Check and add choices, otherwise uncheck and remove
+		// Check and add choices, otherwise uncheck and remove
 		if (value === 'All' || value === 'None') {
 			newChoices = [value];
 		} else {
@@ -96,19 +96,15 @@ function MultiSelection({ choices, statePropertyToChange, userData, setUserData 
 		console.log(newChoices);
 	};
 
-  useOutsideClick(dropdownRef, () => setIsDropdownOpen(false));
+	useOutsideClick(dropdownRef, () => setIsDropdownOpen(false));
 
-  return (
-    <>
-      <SelectElement
-				onClick={toggleDropdown}>
-				{userData.equipment.join(', ')}
-			</SelectElement>
+	return (
+		<>
+			<SelectElement onClick={toggleDropdown}>{userData.equipment.join(', ')}</SelectElement>
 			{isDropdownOpen && (
 				<Dropdown ref={dropdownRef}>
 					{choices.map(choice => (
-						<Choice
-							key={choice}>
+						<Choice key={choice}>
 							<input
 								type='checkbox'
 								id={choice}
@@ -123,17 +119,13 @@ function MultiSelection({ choices, statePropertyToChange, userData, setUserData 
 								onClick={() => handleChoices(choice)}
 								checked={userData.equipment.includes(choice)}
 							/>
-							<Label
-								htmlFor={choice}>
-								{choice}
-							</Label>
+							<Label htmlFor={choice}>{choice}</Label>
 						</Choice>
 					))}
 				</Dropdown>
 			)}
-    </>
-  )
+		</>
+	);
 }
-
 
 export default MultiSelection;

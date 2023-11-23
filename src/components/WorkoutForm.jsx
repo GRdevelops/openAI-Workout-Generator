@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
@@ -57,6 +56,8 @@ const TextArea = styled.textarea`
 	min-height: 7rem;
 	border: ${styles.inputBorder};
 	border-radius: ${styles.inputBorderRadius};
+  background-color: ${styles.inputBackgroundColor};
+
 
 	&::placeholder {
 		vertical-align: top;
@@ -73,15 +74,18 @@ const Input = styled.input`
 	padding: ${styles.inputPadding};
 	border: ${styles.inputBorder};
 	border-radius: ${styles.inputBorderRadius};
+  background-color: ${styles.inputBackgroundColor};
 `;
 
 const Select = styled.select`
-	font-family: ${styles.fontFamily};
-	font-size: ${styles.inputFontSize};
-	margin-bottom: ${styles.verticalSpace};
-	padding: ${styles.inputPadding};
+  font-family: ${styles.fontFamily};
+  font-size: ${styles.inputFontSize};
+  margin-bottom: ${styles.verticalSpace};
+  padding: ${styles.inputPadding};
+  padding-left: .3rem; 
 	border: ${styles.inputBorder};
 	border-radius: ${styles.inputBorderRadius};
+  background-color: ${styles.inputBackgroundColor};
 `;
 
 const Button = styled.button`
@@ -89,18 +93,7 @@ const Button = styled.button`
 `;
 
 // Component
-function WorkoutForm({ onSubmit }) {
-	const [userData, setUserData] = useState({
-		gender: 'Male',
-		weight: 70,
-		weightUnit: 'kg',
-		fitnessLevel: 'beginner',
-		equipment: ['All'],
-		daysPerWeek: 3,
-		goal: 'build-muscle',
-		injuries: '',
-		preferencies: '',
-	});
+function WorkoutForm({ userData, setUserData, onSubmit }) {
 
 	const equipmentChoices = [
 		'All',

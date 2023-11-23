@@ -21,10 +21,10 @@ const Paragraph = styled.p`
 
 const pulse = keyframes`
   0%, 100% {
-    opacity: 0.9
+    opacity: 1
   }
   50% {
-    opacity: 0.1
+    opacity: 0
   }
 `;
 
@@ -65,7 +65,9 @@ function WorkoutProgram({ workoutData }) {
 	if (workoutData) {
 		try {
 			const parsedData = JSON.parse(workoutData);
-			// console.log(parsedData)
+
+			// Test
+			console.log(parsedData)
 
 			// Render one UI element per workout day
 			const renderedDays = Object.keys(parsedData).map((day, index) => (
@@ -96,7 +98,7 @@ function WorkoutProgram({ workoutData }) {
 				<Paragraph
 					css={css`
 						margin: 10% auto;
-						animation: ${pulse} 2.5s linear infinite;
+						animation: ${pulse} 2s infinite;
 					`}>
 					Please submit to see the result
 				</Paragraph>

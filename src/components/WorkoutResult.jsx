@@ -16,6 +16,7 @@ const H2 = styled.h2`
 
 const Output = styled.div`
 	margin: 0 auto;
+	margin-bottom: 4rem;
 	display: flex;
 	flex-direction: column;
 `;

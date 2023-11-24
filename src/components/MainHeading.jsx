@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 const H1 = styled.h1`
-	font-size: 4.5rem;
+	font-size: clamp(3rem, 8vw, 4.5rem);
 	font-weight: 500;
 	margin: 6rem auto;
 	letter-spacing: -0.02em;

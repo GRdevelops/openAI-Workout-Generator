@@ -48,9 +48,12 @@ const generateWorkout = async (userData, setWorkoutData, setLoading) => {
 
     console.log(prompt);  
 
-    const response = await axios.post("http://localhost:8000/generate-workout", {
-      message: prompt,
+    const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:8000";
+    
+    const response = await axios.post(`${backendUrl}/generate-workout`, {
+    message: prompt,
     });
+
 
     const data = response.data.choices[0].message.content.trim(); 
 

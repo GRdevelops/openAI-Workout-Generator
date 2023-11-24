@@ -7,7 +7,7 @@ const styles = {
   fontFamily: 'Arial',
   inputBorder: '2px solid #444152',
   inputBorderRadius: '0.5rem',
-  inputBackgroundColor: '#323137',
+  inputBackgroundColor: '#444152',
   white: '#fff',
   containerWidth: '1920px',
 };

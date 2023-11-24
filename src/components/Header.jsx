@@ -10,7 +10,7 @@ import styles from '../styles/theme.js';
 
 const Container = styled.div`
 	position: relative;
-	padding: 1.5rem 0;
+	padding: 1.6rem 0;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;

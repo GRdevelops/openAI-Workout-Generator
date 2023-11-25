@@ -2,7 +2,7 @@ const styles = {
   primaryColor: '#504D61',
   secondaryColor: '#323038',
   formWidth: '24rem',
-  verticalSpace: '1.5rem',
+  verticalSpace: '1.3rem',
   inputPadding: '1rem',
   wrapperPadding: '1.3rem 1rem',
   fontSize: '1.25rem',

@@ -46,7 +46,7 @@ const generateWorkout = async (userData, setWorkoutData, setLoading) => {
     // const prompt = `Create a ${userInput.daysPerWeek}-day workout program for the following profile: ${userDataString}. Include a daily workout type (e.g., "Legs & Abs") and exercises list, using "max" reps for bodyweight exercises. Format as JSON with days as keys, specifying 'type' and 'exercises' (format: 'sets x reps').`;
 
 
-    console.log(prompt);  
+    // console.log(prompt);  
 
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
     

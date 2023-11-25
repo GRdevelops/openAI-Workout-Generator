@@ -26,7 +26,7 @@ const generateUserDescription = async (userData, setUserDescription) => {
     // goal: get-leaner
     // your response: Lean Pursuit with Zest
 
-    console.log('prompt:', prompt);
+    // console.log('prompt:', prompt);
 
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
     

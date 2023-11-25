@@ -24,6 +24,7 @@ const ProfileImage = ({ onClick }) => {
       src={user.picture}
       alt={user.name}
       whileHover={{ scale: 1.05 }}
+      
     />
   )
 }

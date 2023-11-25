@@ -45,7 +45,6 @@ const generateUserDescription = async (userData, setUserDescription) => {
 
   } catch (error) {
     console.error("Error:", error);
-    setLoading(false);
   }
 };
 

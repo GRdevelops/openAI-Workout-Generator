@@ -57,7 +57,7 @@ const generateWorkout = async (userData, setWorkoutData, setLoading) => {
 
     const data = response.data.choices[0].message.content.trim(); 
 
-    console.log(data);
+    // console.log(data);
     
     setWorkoutData(data);
     setLoading(false);

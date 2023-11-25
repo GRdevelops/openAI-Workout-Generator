@@ -92,7 +92,7 @@ const AuthenticationButton = ({ userDescription }) => {
 						animation: ${pulse} 2s infinite;
 						`}>Submit to see user description</Description>}
 					<button 
-						onClick={() => logout({ returnTo: window.location.origin })}>
+						onClick={() => logout({ returnTo: window.location.origin, client_id: 'tVVFU2JrlX765GPVnj1JITZPSGONoL2d' })}>
 						Log Out
 					</button>
 				</ProfileCard>

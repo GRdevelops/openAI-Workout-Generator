@@ -1,6 +1,6 @@
 
 :root {
-  font-size: clamp(1rem, 2vw, 1.125rem);
+  font-size: clamp(1.25rem, 2vw, 1.25rem);
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -27,13 +27,13 @@ a:hover {
 }
 
 button {
-  border-radius: 8px;
+  border-radius: 1rem;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  padding: 16px 24px;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #42489e;
   border-color: hsla(237, 100%, 70%, 0.6);
   cursor: pointer;
   transition: border-color 0.25s;

@@ -17,10 +17,10 @@ function App() {
 		gender: 'Male',
 		weight: 70,
 		weightUnit: 'kg',
-		fitnessLevel: 'beginner',
+		fitnessLevel: 'Beginner',
 		equipment: ['All'],
 		daysPerWeek: 3,
-		goal: 'build-muscle',
+		goal: 'Gain Muscle',
 		injuries: '',
 		preferencies: '',
 	});
@@ -41,7 +41,7 @@ function App() {
 		<>
 			<Header userDescription={userDescription} />
 			<MainHeading />
-			<WorkoutForm userData={userData} setUserData={setUserData} onSubmit={handleSubmit} />
+			<WorkoutForm userData={userData} setUserData={setUserData} onSubmit={handleSubmit} isLoading={loading}/>
 			<WorkoutResult
 				isLoading={loading}
 				workoutData={workoutData}

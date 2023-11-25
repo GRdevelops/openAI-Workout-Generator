@@ -1,10 +1,12 @@
 import styled from '@emotion/styled';
 import styles from '../../styles/theme.js';
+import { Label } from '../WorkoutForm.jsx'
+import { Wrapper } from '../WorkoutForm.jsx';
 
 const SliderContainer = styled.div`
 	position: relative;
 	width: 100%;
-	margin-bottom: ${styles.verticalSpace};
+	margin: .5rem auto;
 
 	&:hover .tooltip {
 		display: block;
@@ -28,8 +30,8 @@ const SliderInput = styled.input`
 	&::-webkit-slider-thumb {
 		-webkit-appearance: none;
 		appearance: none;
-		width: 22px;
-		height: 22px;
+		width: 28px;
+		height: 28px;
 		background: #3a86ff;
 		cursor: pointer;
 		border-radius: 50%;
@@ -51,32 +53,37 @@ const SliderTooltip = styled.div`
 	background: #333;
 	color: white;
 	text-align: center;
-	border-radius: 6px;
-	padding: 4px 8px;
-	bottom: 110%;
+	border-radius: 12px;
+	padding: 8px 16px;
+	bottom: 100%;
 	left: ${props => `calc(${((props.value - props.min) / (props.max - props.min)) * 95}% - 5%)`};
-	transform: translateX(80%);
+	transform: translateX(30%);
 	white-space: nowrap;
 `;
 
-const Slider = ({ min, max, value, onChange }) => {
+const Slider = ({ label, min, max, value, onChange }) => {
 	return (
-		<SliderContainer>
-			<SliderTooltip
-				className='tooltip'
-				value={value}
-				min={min}
-				max={max}>
-				{value}
-			</SliderTooltip>
-			<SliderInput
-				type='range'
-				min={min}
-				max={max}
-				value={value}
-				onChange={onChange}
-			/>
-		</SliderContainer>
+		<>
+			<Wrapper>
+				<Label>{label}</Label>
+				<SliderContainer>
+					<SliderTooltip
+						className='tooltip'
+						value={value}
+						min={min}
+						max={max}>
+						{value}
+					</SliderTooltip>
+					<SliderInput
+						type='range'
+						min={min}
+						max={max}
+						value={value}
+						onChange={onChange}
+					/>
+				</SliderContainer>
+			</Wrapper>
+		</>
 	);
 };
 

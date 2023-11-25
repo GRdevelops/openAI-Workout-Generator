@@ -8,6 +8,8 @@ import useOutsideClick from '../../utils/useOutsideClicks.js';
 
 // Styles
 import styles from '../../styles/theme.js';
+import { Label } from '../WorkoutForm.jsx';
+import { Wrapper } from '../WorkoutForm.jsx';
 
 const SelectElement = styled.div`
 	cursor: pointer;
@@ -16,7 +18,6 @@ const SelectElement = styled.div`
 	padding: ${styles.inputPadding};
 	border: ${styles.inputBorder};
 	border-radius: ${styles.inputBorderRadius};
-	margin-bottom: ${styles.verticalSpace};
 	line-height: 1.3;
 `;
 
@@ -29,7 +30,7 @@ const Choice = styled.div`
 	}
 `;
 
-const Label = styled.label`
+const Content = styled.label`
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	padding-left: 3rem;
@@ -56,20 +57,20 @@ const Dropdown = styled.div`
 const CheckboxWrapper = styled.div`
 	position: absolute;
 	display: inline-block;
-	width: 20px;
-	height: 20px;
-	border: 2px solid #ddd;
+	width: 24px;
+	height: 24px;
+	border: 3px solid #ddd;
 	border-radius: 10%;
 	background: ${props => (props.checked ? 'white' : 'slate')};
 	background-image: ${props => (props.checked ? `url(${checkmark})` : 'none')};
 	background-repeat: no-repeat;
-	background-size: 90%;
-	background-position: 1px 1px;
+	background-size: 100%;
+	background-position: center;
 	cursor: pointer;
 	margin-left: 1rem;
 `;
 
-function MultiSelection({ choices, statePropertyToChange, userData, setUserData }) {
+function MultiSelection({ label, choices, statePropertyToChange, userData, setUserData }) {
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 	const dropdownRef = useRef(null);
 
@@ -100,30 +101,33 @@ function MultiSelection({ choices, statePropertyToChange, userData, setUserData 
 
 	return (
 		<>
-			<SelectElement onClick={toggleDropdown}>{userData.equipment.join(', ')}</SelectElement>
-			{isDropdownOpen && (
-				<Dropdown ref={dropdownRef}>
-					{choices.map(choice => (
-						<Choice key={choice}>
-							<input
-								type='checkbox'
-								id={choice}
-								value={choice}
-								checked={userData.equipment.includes(choice)}
-								onChange={handleChoices}
-								css={css`
-									display: none;
-								`}
-							/>
-							<CheckboxWrapper
-								onClick={() => handleChoices(choice)}
-								checked={userData.equipment.includes(choice)}
-							/>
-							<Label htmlFor={choice}>{choice}</Label>
-						</Choice>
-					))}
-				</Dropdown>
-			)}
+			<Wrapper>
+				<Label>{label}</Label>
+				<SelectElement onClick={toggleDropdown}>{userData.equipment.join(', ')}</SelectElement>
+				{isDropdownOpen && (
+					<Dropdown ref={dropdownRef}>
+						{choices.map(choice => (
+							<Choice key={choice}>
+								<input
+									type='checkbox'
+									id={choice}
+									value={choice}
+									checked={userData.equipment.includes(choice)}
+									onChange={handleChoices}
+									css={css`
+										display: none;
+									`}
+								/>
+								<CheckboxWrapper
+									onClick={() => handleChoices(choice)}
+									checked={userData.equipment.includes(choice)}
+								/>
+								<Content htmlFor={choice}>{choice}</Content>
+							</Choice>
+						))}
+					</Dropdown>
+				)}
+			</Wrapper>
 		</>
 	);
 }

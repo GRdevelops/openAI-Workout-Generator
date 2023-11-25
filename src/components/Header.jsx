@@ -10,12 +10,14 @@ import styles from '../styles/theme.js';
 
 const Container = styled.div`
 	position: relative;
-	padding: 1.6rem 0;
+	margin-top: 1rem;
+	padding: 2rem 2rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	max-width: ${styles.containerWidth};
-	border-bottom: 1px solid #777;
+	background-color: ${styles.primaryColor};
+	border-radius: ${styles.containerBorderRadius}
 `;
 
 const Logo = styled.img`

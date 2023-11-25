@@ -5,7 +5,7 @@ const styles = {
   verticalSpace: '1.3rem',
   inputPadding: '1rem',
   wrapperPadding: '1.3rem 1rem',
-  fontSize: '1.25rem',
+  fontSize: '1.125rem',
   inputFontSize: '1.25rem',
   fontFamily: 'Arial',
   inputBorder: '0px solid #444152',

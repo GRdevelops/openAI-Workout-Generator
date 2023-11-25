@@ -1,9 +1,7 @@
-const axios = require("axios");
+import axios from 'axios';
 
-module.exports = async (req, res) => {
+export default async (req, res) => {
   if (req.method === 'POST') {
-    console.log("Received data:", req.body);
-
     try {
       const response = await axios.post("https://api.openai.com/v1/chat/completions", {
         model: "gpt-3.5-turbo-1106",
@@ -22,7 +20,6 @@ module.exports = async (req, res) => {
       console.error(error);
       res.status(500).send(`Internal Server Error: ${error.message}`);
     }
-    
   } else {
     res.status(405).send('Method Not Allowed');
   }

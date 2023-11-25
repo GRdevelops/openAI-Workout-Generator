@@ -5,7 +5,13 @@ require("dotenv").config();
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+
+const corsOptions = {
+  origin: 'https://open-ai-workout-generator.vercel.app',
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 
 const PORT = process.env.PORT || 8000;
 

@@ -18,7 +18,7 @@ app.post("/generate-workout", async (req, res) => {
       max_tokens: 500,
     }, {
       headers: {
-        Authorization: `Bearer ${process.env.VITE_OPENAI_API_KEY}`,
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
         "Content-Type": "application/json",
       },
     });

@@ -48,7 +48,7 @@ const generateWorkout = async (userData, setWorkoutData, setLoading) => {
 
     console.log(prompt);  
 
-    const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:8000";
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
     
     const response = await axios.post(`${backendUrl}/generate-workout`, {
     message: prompt,

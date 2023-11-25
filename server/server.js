@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 
 const corsOptions = {
-  origin: ['http://localhost:5174', 'http://localhost:5173', 'http://localhost:4173', 'https://open-ai-workout-generator.vercel.app'],
+  origin: ['http://localhost:5174', 'http://localhost:5173', 'http://localhost:4173', 'http://localhost:4174', 'https://open-ai-workout-generator.vercel.app'],
   optionsSuccessStatus: 200
 };
 

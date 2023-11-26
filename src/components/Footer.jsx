@@ -32,7 +32,7 @@ const Footer = ({ userData }) => {
 		<Container>
 			<blockquote
 				css={css`
-					border-left: 5px solid ${styles.inputBackgroundColor};
+					border-left: 5px solid #42489e;
 					padding-left: 0.7rem;
 				`}>
 				Hope you {motivationalPhrases[userData.goal]}

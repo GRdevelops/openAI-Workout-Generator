@@ -29,8 +29,8 @@ const SliderInput = styled.input`
 	&::-webkit-slider-thumb {
 		-webkit-appearance: none;
 		appearance: none;
-		width: 28px;
-		height: 28px;
+		width: 24px;
+		height: 24px;
 		background: #3a86ff;
 		cursor: pointer;
 		border-radius: 50%;

@@ -125,7 +125,7 @@ function WorkoutForm({ userData, setUserData, onSubmit, isLoading }) {
 
 			<MultiSelection
 				label='Select Equipment:'
-				choices={equipmentChoices}
+				populateWith={equipmentChoices}
 				statePropertyToChange={'equipment'}
 				userData={userData}
 				setUserData={setUserData}
@@ -144,7 +144,7 @@ function WorkoutForm({ userData, setUserData, onSubmit, isLoading }) {
 			<TextArea label='Preferencies:' placeholder='Arms preference, I train in cycles' statePropertyToChange='preferencies' userData={userData} setUserData={setUserData} optional/>
 
 			{/* Avoids multiple api calls in a row */}
-			<Button type='submit' disabled={isLoading}>Submit</Button>
+			<Button type='submit' disabled={isLoading} css={css` position: sticky; bottom: 1rem`}>Submit</Button>
 
 		</Form>
 	);

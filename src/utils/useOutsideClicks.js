@@ -8,18 +8,27 @@ const useOutsideClick = (ref, callback) => {
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('keydown', event => {
+    const handleEscapePress = event => {
       if (event.key === 'Escape') {
         callback();
       }
-    });
+    };
+
+    const handlePopState = () => {
+      callback();
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleEscapePress);
+    window.addEventListener('popstate', handlePopState);
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', handleClickOutside);
+      document.removeEventListener('keydown', handleEscapePress);
+      window.removeEventListener('popstate', handlePopState);
     };
   }, [ref, callback]);
 };
 
 export default useOutsideClick;
+

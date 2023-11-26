@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import styled from '@emotion/styled';
 import { css, keyframes } from '@emotion/react';
@@ -74,11 +74,16 @@ const AuthenticationButton = ({ userDescription }) => {
 	const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 	const [ isProfileOpen, setIsProfileOpen ] = useState(false);
 
+	const dropdownRef = useRef(null);
+
+	useOutsideClick(dropdownRef, () => setIsProfileOpen(false));
+
 	return isAuthenticated ? (
 		<div>
 			<ProfileImage onClick={() => setIsProfileOpen(prev => !prev)} />
 			{isProfileOpen && (
 				<ProfileCard
+					ref={dropdownRef}
 					variants={cardVariants}
           initial="hidden"
           animate="visible"

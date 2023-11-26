@@ -5,6 +5,7 @@ import WorkoutProgram from './WorkoutResult/WorkoutProgram';
 
 // Styles
 import styled from '@emotion/styled';
+import styles from '../styles/theme';
 
 const H2 = styled.h2`
 	font-size: 2rem;
@@ -15,6 +16,7 @@ const H2 = styled.h2`
 `;
 
 const Output = styled.div`
+	font-size: ${styles.inputFontSize};
 	margin: 0 auto;
 	margin-bottom: 4rem;
 	display: flex;

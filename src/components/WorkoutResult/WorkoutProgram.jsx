@@ -12,11 +12,12 @@ const Paragraph = styled.p`
 	margin: 0 auto;
 	line-height: 1.5;
 	text-align: center;
-	background-color: ${styles.inputBackgroundColor};
+	background-color: ${styles.primaryColor};
 	padding: ${styles.inputPadding};
   padding-left: 1rem;
   padding-right: 1rem;
 	border-radius: ${styles.inputBorderRadius};
+	border: ${styles.inputBorder};
 `;
 
 const pulse = keyframes`
@@ -42,7 +43,7 @@ function WorkoutProgram({ workoutData }) {
   //     }
   //   },
   //   "Wednesday": {
-  //     "type": "Upper Body",
+  //     "type": "Upper Body Strengh Training",
   //     "exercises": {
   //       "Bench Press": "3 x 10",
   //       "Pull-ups": "3 x max",
@@ -98,7 +99,7 @@ function WorkoutProgram({ workoutData }) {
 				<Paragraph
 					css={css`
 						margin: 10% auto;
-						animation: ${pulse} 2s infinite;
+						animation: ${pulse} 4s infinite;
 					`}>
 					Please submit to see the result
 				</Paragraph>

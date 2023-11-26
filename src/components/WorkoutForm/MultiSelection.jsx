@@ -40,7 +40,7 @@ const Content = styled.label`
 `;
 
 const Dropdown = styled.div`
-	width: 80%;
+	width: 90%;
 	max-width: calc(${styles.formWidth} + 5%);
 	max-height: 100vh;
 	overflow: scroll;
@@ -59,7 +59,7 @@ const CheckboxWrapper = styled.div`
 	display: inline-block;
 	width: 24px;
 	height: 24px;
-	border: 3px solid #ddd;
+	border: 2px solid #ddd;
 	border-radius: 10%;
 	background: ${props => (props.checked ? 'white' : 'slate')};
 	background-image: ${props => (props.checked ? `url(${checkmark})` : 'none')};
@@ -70,7 +70,7 @@ const CheckboxWrapper = styled.div`
 	margin-left: 1rem;
 `;
 
-function MultiSelection({ label, choices, statePropertyToChange, userData, setUserData }) {
+function MultiSelection({ label, populateWith, statePropertyToChange, userData, setUserData }) {
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 	const dropdownRef = useRef(null);
 
@@ -106,7 +106,7 @@ function MultiSelection({ label, choices, statePropertyToChange, userData, setUs
 				<SelectElement onClick={toggleDropdown}>{userData.equipment.join(', ')}</SelectElement>
 				{isDropdownOpen && (
 					<Dropdown ref={dropdownRef}>
-						{choices.map(choice => (
+						{populateWith.map(choice => (
 							<Choice key={choice}>
 								<input
 									type='checkbox'

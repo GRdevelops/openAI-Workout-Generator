@@ -5,7 +5,6 @@ import styled from '@emotion/styled';
 import styles from '../styles/theme.js';
 
 const Container = styled.div`
-	font-size: 0.925rem;
 	position: relative;
 	margin: 1rem auto;
 	padding: 2rem 2rem;
@@ -17,7 +16,7 @@ const Container = styled.div`
 	max-width: ${styles.containerWidth};
 	background-color: ${styles.primaryColor};
 	border-radius: ${styles.containerBorderRadius};
-	border: ${styles.inputBorder}
+	border: ${styles.inputBorder};
 `;
 
 const Footer = ({ userData }) => {
@@ -31,10 +30,13 @@ const Footer = ({ userData }) => {
 
 	return (
 		<Container>
-			<blockquote css={css`
-				border-left: 5px solid ${styles.inputBackgroundColor};
-				padding-left: .7rem;
-			`}>Hope you {motivationalPhrases[userData.goal]}</blockquote>
+			<blockquote
+				css={css`
+					border-left: 5px solid ${styles.inputBackgroundColor};
+					padding-left: 0.7rem;
+				`}>
+				Hope you {motivationalPhrases[userData.goal]}
+			</blockquote>
 			<div
 				css={css`
 					display: flex;
@@ -43,7 +45,7 @@ const Footer = ({ userData }) => {
 					gap: 1rem;
 					color: white;
 				`}>
-				<a href='https://github.com/GRdevelops'>GitHub</a>
+				<a href='https://github.com/GRdevelops/openAI-Workout-Generator.git'>GitHub</a>
 				<a href='https://www.desengineers.co/'>Portfolio</a>
 			</div>
 		</Container>

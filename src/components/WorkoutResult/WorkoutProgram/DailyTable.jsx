@@ -3,6 +3,7 @@ import styles from '../../../styles/theme.js';
 
 const Table = styled.div`
 	display: flex;
+	flex-wrap: wrap;
 	flex-direction: column;
 	row-gap: 1.2rem;
 	font-size: ${styles.fontSize};
@@ -16,8 +17,11 @@ const Table = styled.div`
 
 const Row = styled.div`
 	display: flex;
+	flex-wrap: wrap;
+	gap: .5rem;
 	justify-content: space-between;
 	align-items: center;
+	word-break: normal;
 `;
 
 const StaticInfo = styled.span`

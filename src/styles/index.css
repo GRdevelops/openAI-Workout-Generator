@@ -26,8 +26,9 @@ a:hover {
   opacity: 0.9;
 }
 
-input {
-  color: white;
+input,
+select {
+  color: inherit;
 }
 
 button {

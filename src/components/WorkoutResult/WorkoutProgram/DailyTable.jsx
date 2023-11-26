@@ -9,7 +9,7 @@ const Table = styled.div`
 	width: 100%;
 	max-width: ${styles.formWidth};
 	margin: 2rem auto;
-	background-color: ${styles.primaryColor};
+	background-color: ${styles.secondaryColor};
 	border-radius: 2rem;
 	padding: 1.5rem;
 `;

@@ -1,6 +1,6 @@
 const styles = {
   primaryColor: '#504D6111',
-  secondaryColor: '#323038',
+  secondaryColor: '#504D61',
   formWidth: '24rem',
   verticalSpace: '1.3rem',
   inputPadding: '1rem',

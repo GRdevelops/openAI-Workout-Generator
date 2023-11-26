@@ -100,6 +100,9 @@ function MultiSelection({ label, populateWith, statePropertyToChange, userData, 
 		} else {
 			if (userData[statePropertyToChange].includes(value)) {
 				newChoices = userData[statePropertyToChange].filter(choice => choice !== value);
+				if (newChoices.length === 0) {
+					newChoices.push('All');
+				}
 			} else {
 				newChoices = userData[statePropertyToChange].filter(choice => choice !== 'All' && choice !== 'None');
 				newChoices.push(value);
@@ -107,7 +110,6 @@ function MultiSelection({ label, populateWith, statePropertyToChange, userData, 
 		}
 
 		setUserData({ ...userData, [statePropertyToChange]: newChoices });
-
 		console.log(newChoices);
 	};
 

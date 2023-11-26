@@ -51,8 +51,8 @@ App.jsx/
 │
 ├─ Header.jsx
 │   ├── AuthenticationButton.jsx
-│   ├── ProfileImage.jsx
-│   └── ProfileInfo.jsx
+│         ├── ProfileImage.jsx
+│         └── ProfileInfo.jsx
 │
 ├─ MainHeading.jsx
 │
@@ -60,7 +60,7 @@ App.jsx/
 │
 ├─ WorkoutResult.jsx
 │   └── WorkoutProgram.jsx
-│   └── DailyTables.jsx
+│         └── DailyTables.jsx
 │  
 ├─ WorkoutForm.jsx
 │   ├── RadioButton.jsx

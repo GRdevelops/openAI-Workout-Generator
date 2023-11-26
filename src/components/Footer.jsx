@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import styles from '../styles/theme.js';
 
 const Container = styled.div`
-	font-size: 0.875rem;
+	font-size: 0.925rem;
 	position: relative;
 	margin: 1rem auto;
 	padding: 2rem 2rem;
@@ -13,10 +13,11 @@ const Container = styled.div`
 	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: center;
-	gap: 1rem;
+	gap: 1.5rem;
 	max-width: ${styles.containerWidth};
 	background-color: ${styles.primaryColor};
-	border-radius: ${styles.containerBorderRadius}
+	border-radius: ${styles.containerBorderRadius};
+	border: ${styles.inputBorder}
 `;
 
 const Footer = ({ userData }) => {

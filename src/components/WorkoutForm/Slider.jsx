@@ -1,7 +1,6 @@
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import styles from '../../styles/theme.js';
-import { Label } from '../WorkoutForm.jsx'
-import { Wrapper } from '../WorkoutForm.jsx';
+import { Label, Wrapper } from '../WorkoutForm.jsx';
 
 const SliderContainer = styled.div`
 	position: relative;
@@ -54,37 +53,56 @@ const SliderTooltip = styled.div`
 	color: white;
 	text-align: center;
 	border-radius: 12px;
-	padding: 8px 16px;
-	bottom: 100%;
+	padding: 7px 14px;
+	bottom: 105%;
 	left: ${props => `calc(${((props.value - props.min) / (props.max - props.min)) * 95}% - 5%)`};
 	transform: translateX(30%);
 	white-space: nowrap;
 `;
 
-const Slider = ({ label, min, max, value, onChange }) => {
-	return (
-		<>
-			<Wrapper>
-				<Label>{label}</Label>
-				<SliderContainer>
-					<SliderTooltip
-						className='tooltip'
-						value={value}
-						min={min}
-						max={max}>
-						{value}
-					</SliderTooltip>
-					<SliderInput
-						type='range'
-						min={min}
-						max={max}
-						value={value}
-						onChange={onChange}
-					/>
-				</SliderContainer>
-			</Wrapper>
-		</>
-	);
+const Slider = ({ label, min, max, userData, setUserData }) => {
+  const [showTooltip, setShowTooltip] = useState(false);
+
+	const handleSliderChange = event => {
+		setUserData({ ...userData, daysPerWeek: event.target.value });
+	};
+
+  const handleTouchStart = () => {
+    setShowTooltip(true);
+  };
+
+  const handleTouchEnd = () => {
+    setShowTooltip(false);
+  };
+
+	const tooltipStyle = showTooltip ? { display: 'block' } : {};
+
+  return (
+    <>
+      <Wrapper>
+        <Label>{label}</Label>
+        <SliderContainer>
+          <SliderTooltip
+            className='tooltip'
+            value={userData.daysPerWeek}
+            min={min}
+            max={max}
+						style={tooltipStyle}>
+            {userData.daysPerWeek}
+          </SliderTooltip>
+          <SliderInput
+            type='range'
+            min={min}
+            max={max}
+            value={userData.daysPerWeek}
+            onChange={handleSliderChange}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          />
+        </SliderContainer>
+      </Wrapper>
+    </>
+  );
 };
 
 export default Slider;

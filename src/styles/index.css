@@ -1,6 +1,6 @@
 
 :root {
-  font-size: clamp(1.125rem, 2vw, 1.125rem);
+  font-size: 1.125rem;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -8,7 +8,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #28262B;
+  background-color: #232226;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -26,7 +26,12 @@ a:hover {
   opacity: 0.9;
 }
 
+input {
+  color: white;
+}
+
 button {
+  color: white;
   border-radius: 1rem;
   border: 1px solid transparent;
   padding: 16px 24px;
@@ -34,7 +39,7 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: #42489e;
-  border-color: hsla(237, 100%, 70%, 0.6);
+  /* border-color: hsla(237, 100%, 70%, 0.6); */
   cursor: pointer;
   transition: border-color 0.25s;
 }

@@ -33,7 +33,7 @@ const ProfileCard = styled(motion.div)`
     content: '';
     position: absolute;
     bottom: 100%;
-    right: 20px;
+    right: 55px;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
     border-bottom: 8px solid white; 
@@ -60,7 +60,7 @@ const cardVariants = {
 			opacity: 0,
 			scale: 0,
 			y: '-50%',
-			x: '40%',
+			x: '30%',
 		},
 		visible: {
 			opacity: 1,

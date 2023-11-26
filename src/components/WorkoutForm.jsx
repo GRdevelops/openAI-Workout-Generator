@@ -35,6 +35,7 @@ export const Wrapper = styled.div`
 	flex-direction: column;
 	border-radius: ${styles.wrapperBorderRadius};
 	margin-bottom: ${styles.verticalSpace};
+	border: ${styles.inputBorder};
 `;
 
 // Component
@@ -73,9 +74,7 @@ function WorkoutForm({ userData, setUserData, onSubmit, isLoading }) {
 
 	const goals = ['Gain Muscle', 'Get Leaner', 'Boost Strength', 'Stay Fit', 'Enhance Stamina']
 
-	const handleSliderChange = event => {
-		setUserData({ ...userData, daysPerWeek: event.target.value });
-	};
+
 
 	const handleSubmit = event => {
 		event.preventDefault();
@@ -136,8 +135,8 @@ function WorkoutForm({ userData, setUserData, onSubmit, isLoading }) {
 				label='How many days can you workout per week?'
 				min={1}
 				max={7}
-				value={userData.daysPerWeek}
-				onChange={handleSliderChange}
+				userData={userData}
+				setUserData={setUserData}
 			/>
 
 			<TextArea label='Injuries:' placeholder='Knee injury' statePropertyToChange='injuries' userData={userData} setUserData={setUserData} optional/>

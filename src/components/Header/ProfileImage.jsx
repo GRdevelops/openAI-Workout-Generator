@@ -8,11 +8,16 @@ import styles from '../../styles/theme.js';
 
 const Image = styled(motion.img)`
 	max-height: 55px;
-	border-radius: 50%;
+	border-radius: 100%;
 	cursor: pointer;
 	border: ${styles.inputBorder};
 	position: relative;
 	top: 3px;
+  transition: all 50ms ease;
+
+  &:hover {
+    border: 1px solid #fffa;
+  }
 `;
 
 const ProfileImage = ({ onClick }) => {
@@ -23,7 +28,7 @@ const ProfileImage = ({ onClick }) => {
 			onClick={onClick}
       src={user.picture}
       alt={user.name}
-      whileHover={{ scale: 1.05 }}
+      // whileHover={{ scale: 1.05 }}
       
     />
   )

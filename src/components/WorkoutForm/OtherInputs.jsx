@@ -61,6 +61,7 @@ const LongText = styled.textarea`
 	border: ${styles.inputBorder};
 	border-radius: ${styles.inputBorderRadius};
 	background-color: ${styles.inputBackgroundColor};
+	resize: none;
 
 	&::placeholder {
 		vertical-align: top;

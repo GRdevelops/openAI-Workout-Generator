@@ -11,13 +11,14 @@ import styles from '../styles/theme.js';
 const Container = styled.div`
 	position: relative;
 	margin-top: 1rem;
-	padding: 2rem 2rem;
+	padding: 1.5rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	max-width: ${styles.containerWidth};
 	background-color: ${styles.primaryColor};
-	border-radius: ${styles.containerBorderRadius}
+	border-radius: ${styles.containerBorderRadius};
+	border: ${styles.inputBorder};
 `;
 
 const Logo = styled.img`

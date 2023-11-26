@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import checkmark from '../../assets/checkmark.svg';
+import { motion } from 'framer-motion';
 
 // Custom Hook
 import useOutsideClick from '../../utils/useOutsideClicks.js';
@@ -41,12 +42,13 @@ const Content = styled.label`
 
 const Dropdown = styled.div`
 	width: 90%;
+	height: 70%;
 	max-width: calc(${styles.formWidth} + 5%);
 	max-height: 100vh;
 	overflow: scroll;
 	background-color: ${styles.inputBackgroundColor};
 	position: fixed;
-	top: 0%;
+	bottom: 0%;
 	left: 50%;
 	transform: translatex(-50%);
 	z-index: 99;
@@ -69,6 +71,18 @@ const CheckboxWrapper = styled.div`
 	cursor: pointer;
 	margin-left: 1rem;
 `;
+
+const DropdownInvisibleBackgroundWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 98;
+`;
+
+const MotionDropdown = motion(Dropdown);
 
 function MultiSelection({ label, populateWith, statePropertyToChange, userData, setUserData }) {
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -97,7 +111,23 @@ function MultiSelection({ label, populateWith, statePropertyToChange, userData, 
 		console.log(newChoices);
 	};
 
+	// Close on clicking outside
 	useOutsideClick(dropdownRef, () => setIsDropdownOpen(false));
+
+	// Disable scrolling on open
+	useEffect(() => {
+    if (isDropdownOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [isDropdownOpen]);
+
+	// Appear animation
+	const dropdownVariants = {
+    hidden: { x: '-50%', y: "100%", opacity: 0 },
+    visible: { x: '-50%', y: 0, opacity: 1 },
+  };
 
 	return (
 		<>
@@ -105,27 +135,40 @@ function MultiSelection({ label, populateWith, statePropertyToChange, userData, 
 				<Label>{label}</Label>
 				<SelectElement onClick={toggleDropdown}>{userData.equipment.join(', ')}</SelectElement>
 				{isDropdownOpen && (
-					<Dropdown ref={dropdownRef}>
-						{populateWith.map(choice => (
-							<Choice key={choice}>
-								<input
-									type='checkbox'
-									id={choice}
-									value={choice}
-									checked={userData.equipment.includes(choice)}
-									onChange={handleChoices}
-									css={css`
-										display: none;
-									`}
-								/>
-								<CheckboxWrapper
-									onClick={() => handleChoices(choice)}
-									checked={userData.equipment.includes(choice)}
-								/>
-								<Content htmlFor={choice}>{choice}</Content>
-							</Choice>
-						))}
-					</Dropdown>
+					<DropdownInvisibleBackgroundWrapper>
+						<MotionDropdown 
+							ref={dropdownRef}
+							initial="hidden"
+							animate="visible"
+							exit="hidden"
+							variants={dropdownVariants}
+							transition={{ 
+								type: "spring", 
+								stiffness: 100,
+								damping: 15,
+							}}
+						>
+							{populateWith.map(choice => (
+								<Choice key={choice}>
+									<input
+										type='checkbox'
+										id={choice}
+										value={choice}
+										checked={userData.equipment.includes(choice)}
+										onChange={handleChoices}
+										css={css`
+											display: none;
+										`}
+									/>
+									<CheckboxWrapper
+										onClick={() => handleChoices(choice)}
+										checked={userData.equipment.includes(choice)}
+									/>
+									<Content htmlFor={choice}>{choice}</Content>
+								</Choice>
+							))}
+						</MotionDropdown>
+					</DropdownInvisibleBackgroundWrapper>
 				)}
 			</Wrapper>
 		</>

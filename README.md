@@ -81,7 +81,7 @@ The OpenAI Workout Generator was a big learning experience.
 
 Keeping data connected between different components, a.k.a. managing the flow of states, was one of the most fascinating tasks I have done so far. 
 
-The beginning is straightforward and flows well. Towards the end, you really get a feel for how important modularity is — especially when you make tiny tweaks, you fix the issue but you break something completely elsewhere, I bet we all know that feeling.
+The beginning is straightforward and flows well. Towards the end, you really get a feel for how important modularity is — especially when you make tiny tweaks. You fix the issue, but then you break something completely elsewhere. I bet we all know that feeling.
 
 I did enjoy keeping the code as clean as possible with Emotion and a few comments. 
 

@@ -11,10 +11,12 @@ The output has an expected structure, with days as the first keys and exercises 
 ## Technologies
 
 - **REACT**
-- **OPENAI API**
-- **EMOTION**, CSS-in-JS styling
-- **VITE**, Bundler
-- **AUTH0**, Authentication
+- **RESTful APIs**, OpenAI
+- **CSS-in-JS**, Emotion
+- **Bundler**, VITE
+- **Serverless functions**, Vercel
+- **Web Analytics**, Vercel
+- **Authentication**, AUTH0
 
 ## Deployment
 

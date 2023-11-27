@@ -1,6 +1,6 @@
 # OpenAI Workout Generator
 
-This is a dynamic and user-friendly fitness application built with React. 
+This fitness application, featured in my portfolio, is a dynamic and user-friendly tool built using React. 
 This app leverages OpenAI LLM and its API to retrieve information such as workout exercises and their ideal combinations based on user goals, equipment and preferences. 
 
 User info is collected through a form where the state is updated with each input. 
@@ -88,3 +88,9 @@ I did enjoy keeping the code as clean as possible with Emotion and a few comment
 This was a project that I wanted to build before even knowing how to code. Seeing it becoming a reality from a thought was fulfilling and rewarding. 
 
 Moving forward, I am excited to widen and deepen my knowledge in the front end (and why not, also AI engineering), along with a strong attention to User Experience.
+
+## Contact
+
+- **Email**: gianniruggieri@outlook.com
+- **Portfolio**: https://www.desengineers.co/
+- **GitHub Profile**: https://github.com/GRdevelops/

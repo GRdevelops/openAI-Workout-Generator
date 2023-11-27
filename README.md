@@ -22,7 +22,10 @@ The output has an expected structure, with days as the first keys and exercises 
 
 This project is live at https://open-ai-workout-generator.vercel.app/.
 
-<img src="./public/homepage-screen.png" alt="Component Map" width="500"/>
+<a href="https://open-ai-workout-generator.vercel.app/" target="_blank">
+    <img src="./public/homepage-screen.png" alt="Component Map" width="500" />
+</a>
+
 
 ## Key Features
 

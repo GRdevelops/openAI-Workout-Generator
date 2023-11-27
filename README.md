@@ -79,7 +79,7 @@ App.jsx/
 
 The OpenAI Workout Generator was a big learning experience. 
 
-Managing the flow of states and keeping data connected between different components was one of the most fascinating things. 
+Managing the flow of states and keeping data connected between different components was one of the most fascinating tasks. 
 
 The beginning is straightforward and flows well. I noticed It was towards the end, where I had to make some tweaks that you really get a feel of how important modularity is. 
 

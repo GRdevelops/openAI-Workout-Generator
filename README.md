@@ -38,11 +38,11 @@ This project is live at https://open-ai-workout-generator.vercel.app/.
 
 This project was a learning curve in understanding what it takes to build a functional product from 0 to 1. The journey involved:
 
-- Understanding the flow and management of states in React.
-- Understanding the purpose of isolation and responsibility in the codebase, towards the end of the project I had to make many tiny changes and that's where I saw first-hand the importance of modularity.
-- Balancing between styling and JavaScript logic.
-- Implementing authentication.
-- Implementing a little server with Heroku, which got me some headaches and was not even in the scope of the front end. After successfully implementing it, I then went on using Vercel serverless functions for cost convenience.
+- Understanding the flow and management of states in React, in particular, collecting data through form components, giving it to fetching functions and displaying the result in the workout tables.
+- Understanding the purpose of isolation and responsibility in the codebase, towards the end, I could really see modularity and separation of responsibilities becoming increasingly important.
+- Managing styling with Emotion and javascript objects, choosing the right styles to share across components, framer motion animations and ensuring a good UX.
+- Implementing authentication, following Auth0 guidelines.
+- Implementing a little server with Heroku, which got me some headaches at first and was not even in the scope of the front end. After successfully implementing it, I went on using Vercel serverless functions for cost convenience.
 
 The mantra for this project: Connect data seamlessly, and keep logic distinct and modular.
 

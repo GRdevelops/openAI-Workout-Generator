@@ -22,12 +22,9 @@ The output has an expected structure, with days as the first keys and exercises 
 
 This project is live at https://open-ai-workout-generator.vercel.app/.
 
-<p align="center"> 
-  <kbd>
-    <a href="https://open-ai-workout-generator.vercel.app/" target="_blank"><img src="./public/OpenAI-W-Gen.gif" alt="OpenAI Workout Generator GIF" width="500"></a>
-  </kbd>
+<p align=""> 
+  <a href="https://open-ai-workout-generator.vercel.app/" target="_blank"><img src="https://github.com/GRdevelops/openAI-Workout-Generator/assets/121963326/fb5158c2-9083-4717-8f83-5079549f1a75" alt="OpenAI Workout Generator GIF" width="500"></a>
 </p>
-
 
 ## Key Features
 

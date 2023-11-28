@@ -1,12 +1,49 @@
 # OpenAI Workout Generator
 
-This fitness application, featured in my portfolio, is a dynamic and user-friendly tool built using React. 
-This app leverages OpenAI LLM and its API to retrieve information such as workout exercises and their ideal combinations based on user goals, equipment and preferences. 
+This is a web application that provides tailored workouts based on user goals and equipment.
 
-User info is collected through a form where the state is updated with each input. 
-User Data is then collected as a state object and used as a reference during API communication. 
-OpenAI LLM (Language Learning Model) is given the instruction to respond in a JSON format, the response is then converted into a javascript object.
-The output has an expected structure, with days as the first keys and exercises as children objects. This allows me to store specific data into variables and map each day to dynamically populate UI elements only if needed and as I visually want.
+This app leverages OpenAI LLM and its API to retrieve information and React to dynamically display content.
+
+```
+Start
+  |
+  v
+Collect User Info in a state object through the Form
+  | (State updates at each input)
+  v
+Submit
+  |
+  + ---> Update the inspirational quote in the footer
+  |
+  + ---> Fetch an independent small user description that will go inside the user profile if he is logged in.
+  |
+  v
+Fetch OpenAI API through a backend serverless function (to protect API-sensitive data) and request response in a JSON format
+  | (Request response in a JSON format, add "header: 'Content-Type': 'application/json'")
+  v
+Await JSON Response
+  |
+  v
+Convert JSON to a JavaScript Object
+  |
+  v
+Process Output (since it has a predictable structure)
+  | (Save new variables: Days as keys, Exercises as objects)
+  v
+Map Each Day to Dynamically Populate UI Elements
+  |  (Object.keys(parsedData).map((day, index) => (
+  |        <DailyTable
+  |          key={index}
+  |          dayName={day}
+  |          exercisesOfTheDay={parsedData[day]}
+  |        />)
+  |  )
+  v
+No UI elements are Empty
+  | 
+  v
+End
+```
 
 ## Technologies
 

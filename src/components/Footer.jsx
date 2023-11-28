@@ -45,8 +45,8 @@ const Footer = ({ userData }) => {
 					gap: 1rem;
 					color: white;
 				`}>
-				<a href='https://github.com/GRdevelops/openAI-Workout-Generator.git'>GitHub</a>
-				<a href='https://www.desengineers.co/'>Portfolio</a>
+				<a href='https://github.com/GRdevelops/openAI-Workout-Generator.git' target='_blank'>GitHub</a>
+				<a href='https://www.desengineers.co/' target='_blank'>Portfolio</a>
 			</div>
 		</Container>
 	);

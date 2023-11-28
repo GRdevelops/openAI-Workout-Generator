@@ -10,16 +10,16 @@ Start
   v
 Collect User Info in a state object through the Form
   | (State updates at each input)
+  |
+  + ---> Update inspirational quote in the footer
   v
 Submit
   |
-  + ---> Update the inspirational quote in the footer
-  |
-  + ---> Fetch an independent small user description that will go inside the user profile if he is logged in.
+  + ---> Independently fetch a small user description that will go inside the user profile if he is logged in.
   |
   v
 Fetch OpenAI API through a backend serverless function (to protect API-sensitive data) and request response in a JSON format
-  | (Request response in a JSON format, add "header: 'Content-Type': 'application/json'")
+  | (use "response_format: { "type": "json_object" }")
   v
 Await JSON Response
   |

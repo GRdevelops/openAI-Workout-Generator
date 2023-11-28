@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 import './styles/App.css';
 
 // Components
@@ -10,7 +11,7 @@ import WorkoutResult from './components/WorkoutResult';
 import Footer from './components/Footer';
 
 // Utilities
-import handleFormSubmit from './utils/generateWorkout';
+import generateWorkout from './utils/generateWorkout';
 import generateUserDescription from './utils/generateUserDescription';
 
 function App() {
@@ -28,21 +29,19 @@ function App() {
 	const [ workoutData, setWorkoutData ] = useState('');
 	const [ userDescription, setUserDescription ] = useState('');
 	const [ loading, setLoading ] = useState(false);
+	const { isAuthenticated } = useAuth0();
 
 	const handleSubmit = userData => {
-		handleFormSubmit(userData, setWorkoutData, setLoading);
-		generateUserDescription(userData, setUserDescription);
+		generateWorkout(userData, setWorkoutData, setLoading);
+		isAuthenticated && generateUserDescription(userData, setUserDescription);
 	};
-
-	useEffect(() => {
-    console.log(userDescription);
-  }, [userDescription]);
 
 	return (
 		<>
 			<MetaData 
 				pageTitle='AI Workout Assistant' 
-				description='Generate a bespoke fitness program, without having to think about it.'/>
+				description='Generate a tailored fitness program, without having to think about it.'
+			/>
 			<Header userDescription={userDescription} />
 			<MainHeading />
 			<WorkoutForm userData={userData} setUserData={setUserData} onSubmit={handleSubmit} isLoading={loading}/>

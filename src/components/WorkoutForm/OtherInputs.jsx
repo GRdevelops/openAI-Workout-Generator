@@ -109,14 +109,20 @@ export function Selection({ label, populateWith, statePropertyToChange, userData
 	);
 }
 
-export function TextArea({ label, placeholder, statePropertyToChange, userData, setUserData, optional}) {
-  return (
-    <>
+export function TextArea({ label, placeholder, statePropertyToChange, userData, setUserData, optional }) {
+	return (
+		<>
 			<Wrapper>
 				<Label>
 					{label}
 					{optional && (
-						<span css={css`opacity: 0.5;`}>{' '}(optional)</span>
+						<span
+							css={css`
+								opacity: 0.5;
+							`}>
+							{' '}
+							(optional)
+						</span>
 					)}
 				</Label>
 				<LongText
@@ -127,6 +133,6 @@ export function TextArea({ label, placeholder, statePropertyToChange, userData, 
 					onChange={e => setUserData({ ...userData, [statePropertyToChange]: e.target.value })}
 				/>
 			</Wrapper>
-    </>
-  )
-};
+		</>
+	);
+}

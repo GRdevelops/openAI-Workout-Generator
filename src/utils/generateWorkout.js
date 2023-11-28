@@ -8,7 +8,7 @@ const generateWorkout = async (userData, setWorkoutData, setLoading) => {
 
     const userDataString = JSON.stringify(userData);
     
-    // Original
+    // Fist version
     // const prompt = `Generate a one week workout program based on these informations: "${userDataString}". 
     // In {type} write a summary of the workout (e.g. "Legs & Abs", "Back & Biceps", "Chest & Triceps).
     // For bodyweight exercices use "max" for the reps.
@@ -43,27 +43,23 @@ const generateWorkout = async (userData, setWorkoutData, setLoading) => {
       }
     }`
 
-    // const prompt = `Create a ${userInput.daysPerWeek}-day workout program for the following profile: ${userDataString}. Include a daily workout type (e.g., "Legs & Abs") and exercises list, using "max" reps for bodyweight exercises. Format as JSON with days as keys, specifying 'type' and 'exercises' (format: 'sets x reps').`;
-
-
-    // console.log(prompt);  
-
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
     
     const response = await axios.post(`${backendUrl}/generate-workout`, {
-    message: prompt,
+      model: 'gpt-3.5-turbo-1106',
+      message: prompt,
+      response_format: { "type": "json_object" },
+      max_tokens: 500,
     });
 
-
     const data = response.data.choices[0].message.content.trim(); 
-
-    // console.log(data);
-    
+    console.log('Workout generated');
     setWorkoutData(data);
     setLoading(false);
+    const modelUtilized = response.data.model;
 
     // Cost calculation
-    calculateComplitionCost(response.data);
+    calculateComplitionCost(response.data, modelUtilized);
 
   } catch (error) {
     console.error("Error:", error);

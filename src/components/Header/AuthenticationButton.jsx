@@ -33,7 +33,7 @@ const ProfileCard = styled(motion.div)`
     content: '';
     position: absolute;
     bottom: 100%;
-    right: 55px;
+    right: 45px;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
     border-bottom: 8px solid white; 
@@ -76,7 +76,7 @@ const AuthenticationButton = ({ userDescription }) => {
 
 	const dropdownRef = useRef(null);
 
-	useOutsideClick(dropdownRef, () => setIsProfileOpen(false));
+	useOutsideClick(dropdownRef, () => setIsProfileOpen(prev => !prev));
 
 	return isAuthenticated ? (
 		<div>

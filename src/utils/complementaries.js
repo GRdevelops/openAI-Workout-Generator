@@ -1,14 +1,24 @@
 
-export const calculateComplitionCost = (completion) => {
+export const calculateComplitionCost = (completion, modelUtilized) => {
+  let price = 0.001 / 1000; // default value
+
+  if (modelUtilized.startsWith('gpt-4')) {
+    price = 0.03 / 1000;
+  }
+
+  if (modelUtilized.startsWith('gpt-3.5-turbo')) {
+    price = 0.001 / 1000;
+  }
+
   let cost = 0;
-      cost += completion.usage.prompt_tokens * 0.001/1000;
-      cost += completion.usage.completion_tokens * 0.002/1000;
-      console.log('Tokens:', completion.usage.total_tokens, '\nCost:', parseFloat(cost.toFixed(5)), '€')
+  cost += completion.usage.prompt_tokens * price;
+  cost += completion.usage.completion_tokens * price;
+  console.log('Model:', modelUtilized, '\nTokens:', completion.usage.total_tokens, '\nCost:', parseFloat(cost.toFixed(5)), '€');
 }
 
 
 
-// // Streamed answer (NOT USED)
+// // Stream answer (NOT USED)
 // export const compileStreamedAnswer = async (completion) => {
 //   let paragraph = "";
 //   for await (const chunk of completion) {

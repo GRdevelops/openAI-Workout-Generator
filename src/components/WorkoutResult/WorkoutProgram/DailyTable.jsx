@@ -32,7 +32,6 @@ const StaticInfo = styled.span`
 const Line = styled.div`
 	height: 1px;
 	background-color: ${styles.white};
-	// margin: -.4rem 0;
 `;
 
 const Day = styled.h4`
@@ -52,16 +51,14 @@ const Exercise = styled.a`
 	}
 `;
 
-function DayTable({ dayName, dayObject }) {
-	// console.log(dayObject);
-
-	const exercises = Object.entries(dayObject.exercises).map(([exerciseName, details], index) => {
-		const youtubeLink = `https://www.youtube.com/results?search_query=${encodeURIComponent(exerciseName)}`;
+function DayTable({ dayName, exercisesOfTheDay }) {
+	const exercises = Object.entries(exercisesOfTheDay.exercises).map(([exerciseName, details], index) => {
+		const dynamicYoutubeLink = `https://www.youtube.com/results?search_query=${encodeURIComponent(exerciseName)}`;
 
 		return (
 			<Row key={index}>
 				<Exercise
-					href={youtubeLink}
+					href={dynamicYoutubeLink}
 					target='_blank'
 					rel='noopener noreferrer'
 					title='Search on Youtube'>
@@ -76,7 +73,7 @@ function DayTable({ dayName, dayObject }) {
 		<Table>
 			<Row>
 				<Day>{dayName}</Day>
-				<StaticInfo>{dayObject.type}</StaticInfo>
+				<StaticInfo>{exercisesOfTheDay.type}</StaticInfo>
 			</Row>
 			<Line></Line>
 			<Row>

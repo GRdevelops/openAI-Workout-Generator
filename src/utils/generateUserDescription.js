@@ -8,40 +8,26 @@ const generateUserDescription = async (userData, setUserDescription) => {
     const fitnessLevel = userData.fitnessLevel;
     const goal = userData.goal;
 
-    const prompt = `Based on the user data with gender as ${gender}, fitness level as ${fitnessLevel}, goal as ${goal}, provide a user description in a maximum of four words.`
+    const prompt = `Create a four-word witty description for a ${gender}, ${fitnessLevel} level, aiming to ${goal}.`;
 
-    // Example1:
-    // gender: male
-    // fitness level: beginner
-    // goal: build-muscle
-    // your response: Muscle-Building Novice Man
-    // Example2:
-    // gender: male
-    // fitness level: advanced
-    // goal: increase-strength
-    // your response: Strength-Seeking Seasoned Man
-    // Example3:
-    // gender: female
-    // fitness level: intermediate
-    // goal: get-leaner
-    // your response: Lean Pursuit with Zest
-
-    // console.log('prompt:', prompt);
+    // const oldPrompt = `Based on the user data with gender as ${gender}, fitness level as ${fitnessLevel}, goal as ${goal}, generate a witty user description in a maximum of four words. Do not be offensive.`
 
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
     
     const response = await axios.post(`${backendUrl}/generate-workout`, {
+      model: 'gpt-4',
       message: prompt,
+      max_tokens: 30,
     });
 
     const data = response.data.choices[0].message.content.trim();
-
-    console.log('response:', data);
-    
-    setUserDescription(data);
+    const userDescription = data.replace(/^"|"$/g, '');
+    const modelUtilized = response.data.model;
+    console.log('User description:', userDescription);
+    setUserDescription(userDescription);
 
     // Cost calculation
-    calculateComplitionCost(response.data);
+    calculateComplitionCost(response.data, modelUtilized);
 
   } catch (error) {
     console.error("Error:", error);

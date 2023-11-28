@@ -21,16 +21,24 @@ const Container = styled.div`
 	border: ${styles.inputBorder};
 `;
 
-const Logo = styled.img`
-	max-height: 40px;
+const Logo = styled.a`
 	float: left;
+`;
+
+const Image = styled.img`
+	max-height: 40px;
+	vertical-align: middle;
 `;
 
 const Header = ({ userDescription }) => {
 
+	const homepageLink = 'https://open-ai-workout-generator.vercel.app/';
+
 	return (
 		<Container>
-			<Logo src={logo} />
+			<Logo href={homepageLink}>
+				<Image src={logo} />
+			</Logo>
 			<AuthenticationButton userDescription={userDescription} />
 		</Container>
 	);

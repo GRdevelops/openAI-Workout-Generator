@@ -6,7 +6,6 @@ const MetaData = ({ pageTitle, description}) => {
     <Helmet>
       <title>{pageTitle}</title>
       <meta name="description" content={description} />
-      {/* Add other metadata tags as needed */}
     </Helmet>
   );
 };

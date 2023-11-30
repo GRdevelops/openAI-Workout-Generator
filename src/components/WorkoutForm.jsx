@@ -139,9 +139,10 @@ function WorkoutForm({ userData, setUserData, onSubmit, isLoading }) {
 				setUserData={setUserData}
 			/>
 
-			<TextArea label='Injuries:' placeholder='Knee injury' statePropertyToChange='injuries' userData={userData} setUserData={setUserData} optional/>
-
-			<TextArea label='Preferencies:' placeholder='Arms preference, I train in cycles' statePropertyToChange='preferencies' userData={userData} setUserData={setUserData} optional/>
+			{/* Limit characters count to keep costs under control */}
+			<TextArea label='Injuries:' placeholder='Knee injury' statePropertyToChange='injuries' userData={userData} setUserData={setUserData} maxLength={100} optional/>
+			{/* Limit characters count to keep costs under control */}
+			<TextArea label='Preferences:' placeholder='Total body, A/B split, HIT, Arms and Chest preference' statePropertyToChange='preferences' userData={userData} maxLength={100} setUserData={setUserData} optional/>
 
 			{/* Avoids multiple api calls in a row */}
 			<Button type='submit' disabled={isLoading} css={css` position: sticky; bottom: 1rem`}>Submit</Button>

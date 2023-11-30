@@ -24,7 +24,7 @@ function App() {
 		daysPerWeek: 3,
 		goal: 'Gain Muscle',
 		injuries: '',
-		preferencies: '',
+		preferences: '',
 	});
 	const [ workoutData, setWorkoutData ] = useState('');
 	const [ userDescription, setUserDescription ] = useState('');

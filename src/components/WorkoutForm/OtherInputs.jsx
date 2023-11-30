@@ -109,7 +109,7 @@ export function Selection({ label, populateWith, statePropertyToChange, userData
 	);
 }
 
-export function TextArea({ label, placeholder, statePropertyToChange, userData, setUserData, optional }) {
+export function TextArea({ label, placeholder, statePropertyToChange, userData, setUserData, maxLength, optional}) {
 	return (
 		<>
 			<Wrapper>
@@ -131,6 +131,7 @@ export function TextArea({ label, placeholder, statePropertyToChange, userData, 
 					placeholder={placeholder}
 					value={userData[statePropertyToChange]}
 					onChange={e => setUserData({ ...userData, [statePropertyToChange]: e.target.value })}
+					maxLength={maxLength}
 				/>
 			</Wrapper>
 		</>

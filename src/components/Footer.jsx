@@ -1,3 +1,4 @@
+import React from 'react';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
@@ -19,15 +20,15 @@ const Container = styled.div`
 	border: ${styles.inputBorder};
 `;
 
-const Footer = ({ userData }) => {
-	const motivationalPhrases = {
-		'Get Leaner': 'find joy in every step towards a leaner, healthier you.',
-		'Boost Strength': 'feel empowered with every new level of strength you achieve.',
-		'Gain Muscle': 'relish the journey as your muscles grow and your physique transforms.',
-		'Stay Fit': 'continue to take pride in maintaining your fitness and well-being.',
-		'Enhance Stamina': 'discover new strengths as you push your endurance further.',
-	};
+export const motivationalPhrases = {
+	'Get Leaner': 'find joy in every step towards a leaner, healthier you.',
+	'Boost Strength': 'feel empowered with every new level of strength you achieve.',
+	'Gain Muscle': 'relish the journey as your muscles grow and your physique transforms.',
+	'Stay Fit': 'continue to take pride in maintaining your fitness and well-being.',
+	'Enhance Stamina': 'discover new strengths as you push your endurance further.',
+};
 
+const Footer = ({ userData }) => {
 	return (
 		<Container>
 			<blockquote

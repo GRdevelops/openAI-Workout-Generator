@@ -3,7 +3,6 @@ import { useAuth0 } from '@auth0/auth0-react';
 import './styles/App.css';
 
 // Components
-// import MetaData from './components/MetaData';
 import Header from './components/Header';
 import MainHeading from './components/MainHeading';
 import WorkoutForm from './components/WorkoutForm';
@@ -38,10 +37,6 @@ function App() {
 
 	return (
 		<>
-			{/* <MetaData 
-				pageTitle='AI Workout Assistant' 
-				description='Generate a tailored fitness program, without having to think about it.'
-			/> */}
 			<Header userDescription={userDescription} />
 			<MainHeading />
 			<WorkoutForm userData={userData} setUserData={setUserData} onSubmit={handleSubmit} isLoading={loading}/>

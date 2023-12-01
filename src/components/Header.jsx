@@ -1,8 +1,9 @@
+import React from 'react';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import logo from '../assets/Logo.svg';
 
 // Components
-import logo from '../assets/Logo.svg';
 import AuthenticationButton from './Header/AuthenticationButton.jsx';
 
 // Styles

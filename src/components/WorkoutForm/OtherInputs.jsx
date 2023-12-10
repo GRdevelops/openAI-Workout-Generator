@@ -71,16 +71,16 @@ const LongText = styled.textarea`
 	${customScrollbar};
 `;
 
-export function Bodyweight({ userData, setUserData }) {
+export function Number({ label, statePropertyToChange, userData, setUserData }) {
 	return (
 		<>
 			<Wrapper>
-				<Label htmlFor='bodyweight'>Bodyweight:</Label>
+				<Label htmlFor={statePropertyToChange}>{label}</Label>
 				<Input
-					id='bodyweight'
+					id={statePropertyToChange}
 					type='number'
-					value={userData.weight}
-					onChange={e => setUserData({ ...userData, weight: e.target.value })}
+					value={userData[statePropertyToChange]}
+					onChange={e => setUserData({ ...userData, [statePropertyToChange]: e.target.value })}
 				/>
 			</Wrapper>
 		</>

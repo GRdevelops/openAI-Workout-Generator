@@ -1,7 +1,7 @@
 import PulseLoader from 'react-spinners/PulseLoader';
 
 // Components
-import WorkoutProgram from './WorkoutResult/WorkoutProgram';
+import WorkoutProgramBuilder from './WorkoutResult/WorkoutProgramBuilder';
 
 // Styles
 import styled from '@emotion/styled';
@@ -40,7 +40,7 @@ function WorkoutResult({ isLoading, workoutData }) {
 						speedMultiplier={0.7}
 					/>
 				) : (
-					<WorkoutProgram workoutData={workoutData} />
+					<WorkoutProgramBuilder workoutData={workoutData} />
 				)}
 			</Output>
 		</>

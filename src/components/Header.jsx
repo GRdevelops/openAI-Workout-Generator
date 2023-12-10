@@ -1,5 +1,4 @@
 import React from 'react';
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import logo from '../assets/Logo.svg';
 
@@ -32,7 +31,6 @@ const Image = styled.img`
 `;
 
 const Header = ({ userDescription }) => {
-
 	const homepageLink = 'https://open-ai-workout-generator.vercel.app/';
 
 	return (

@@ -13,12 +13,23 @@ import useOutsideClick from '../../utils/useOutsideClicks.js';
 
 // Styles
 import styles from '../../styles/theme.js';
+
+const TrasparentLayer = styled.div`
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-color: transparent;
+	z-index: 98;
+`
 	
 const ProfileCard = styled(motion.div)`
 	max-width: 400px;
 	color: #111;
 	font-size: ${styles.fontSize};
 	position: absolute;
+	z-index: 99;
 	margin-top: .8rem;
 	right: 0;
 	background-color: white;
@@ -82,25 +93,29 @@ const AuthenticationButton = ({ userDescription }) => {
 		<div>
 			<ProfileImage onClick={() => setIsProfileOpen(prev => !prev)} />
 			{isProfileOpen && (
-				<ProfileCard
-					ref={dropdownRef}
-					variants={cardVariants}
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-					transition={{ duration: 0.1, ease: "linear" }}
-					>
-					<ProfileInfo />
-					{userDescription
-					? <Description>{userDescription}</Description>
-					: <Description css={css`
-						animation: ${pulse} 2s infinite;
-						`}>Submit to see user description</Description>}
-					<button 
-						onClick={() => logout({ returnTo: window.location.origin, client_id: 'tVVFU2JrlX765GPVnj1JITZPSGONoL2d' })}>
-						Log Out
-					</button>
-				</ProfileCard>
+				<>
+					<TrasparentLayer>
+					</TrasparentLayer>
+					<ProfileCard
+						ref={dropdownRef}
+						variants={cardVariants}
+						initial="hidden"
+						animate="visible"
+						exit="hidden"
+						transition={{ duration: 0.1, ease: "linear" }}
+						>
+						<ProfileInfo />
+						{userDescription
+						? <Description>{userDescription}</Description>
+						: <Description css={css`
+							animation: ${pulse} 2s infinite;
+							`}>Submit to see user description</Description>}
+						<button 
+							onClick={() => logout({ returnTo: window.location.origin, client_id: 'tVVFU2JrlX765GPVnj1JITZPSGONoL2d' })}>
+							Log Out
+						</button>
+					</ProfileCard>
+				</>
 			)}
 		</div>
 	) : (

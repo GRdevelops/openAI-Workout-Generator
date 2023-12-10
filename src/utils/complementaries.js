@@ -18,6 +18,40 @@ export const calculateComplitionCost = (completion, modelUtilized) => {
 
 
 
+// // Test data
+// workoutData = `{
+//   "Monday": {
+//     "type": "Full Body",
+//     "exercises": {
+//       "Squats": "3 x 10",
+//       "Push-ups": "3 x max",
+//       "Bent-over Rows": "3 x 10",
+//       "Plank": "3 x 30 seconds"
+//     }
+//   },
+//   "Wednesday": {
+//     "type": "Upper Body Strengh Training",
+//     "exercises": {
+//       "Bench Press": "3 x 10",
+//       "Pull-ups": "3 x max",
+//       "Shoulder Press": "3 x 10",
+//       "Bicep Curls": "3 x 12",
+//       "Tricep Dips": "3 x max"
+//     }
+//   },
+//   "Friday": {
+//     "type": "Lower Body",
+//     "exercises": {
+//       "Deadlifts": "3 x 10",
+//       "Lunges": "3 x 10 each leg",
+//       "Calf Raises": "3 x 15",
+//       "Leg Raises": "3 x 12"
+//     }
+//   }
+// }`;
+
+
+
 // // Stream answer (NOT USED)
 // export const compileStreamedAnswer = async (completion) => {
 //   let paragraph = "";

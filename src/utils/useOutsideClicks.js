@@ -20,7 +20,7 @@ const useOutsideClick = (ref, callback) => {
 
     document.addEventListener('mousedown', handleClickOutside);
     document.addEventListener('keydown', handleEscapePress);
-    window.addEventListener('popstate', handlePopState);
+    window.addEventListener('popstate', handlePopState); // handle tasto indietro (x mobile)
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);

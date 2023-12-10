@@ -14,9 +14,9 @@ import generateWorkout from './utils/generateWorkout';
 import generateUserDescription from './utils/generateUserDescription';
 
 function App() {
-	const [ userData, setUserData ] = useState({
+	const [userData, setUserData] = useState({
 		gender: 'Male',
-		weight: 70,
+		bodyweight: 70,
 		weightUnit: 'kg',
 		fitnessLevel: 'Beginner',
 		equipment: ['All'],
@@ -25,9 +25,9 @@ function App() {
 		injuries: '',
 		preferences: '',
 	});
-	const [ workoutData, setWorkoutData ] = useState('');
-	const [ userDescription, setUserDescription ] = useState('');
-	const [ loading, setLoading ] = useState(false);
+	const [workoutData, setWorkoutData] = useState('');
+	const [userDescription, setUserDescription] = useState('');
+	const [loading, setLoading] = useState(false);
 	const { isAuthenticated } = useAuth0();
 
 	const handleSubmit = userData => {
@@ -39,12 +39,17 @@ function App() {
 		<>
 			<Header userDescription={userDescription} />
 			<MainHeading />
-			<WorkoutForm userData={userData} setUserData={setUserData} onSubmit={handleSubmit} isLoading={loading}/>
+			<WorkoutForm
+				userData={userData}
+				setUserData={setUserData}
+				handleData={handleSubmit}
+				isLoading={loading}
+			/>
 			<WorkoutResult
 				isLoading={loading}
 				workoutData={workoutData}
 			/>
-			<Footer userData={userData}/>
+			<Footer userData={userData} />
 		</>
 	);
 }

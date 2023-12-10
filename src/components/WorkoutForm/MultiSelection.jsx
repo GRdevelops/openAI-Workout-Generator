@@ -92,25 +92,25 @@ function MultiSelection({ label, populateWith, statePropertyToChange, userData, 
 
 	const handleChoices = event => {
 		const value = event.target.value;
-		let newChoices;
+		let newEquipment;
 
 		// Check and add choices, otherwise uncheck and remove
 		if (value === 'All' || value === 'None') {
-			newChoices = [value];
+			newEquipment = [value];
 		} else {
 			if (userData[statePropertyToChange].includes(value)) {
-				newChoices = userData[statePropertyToChange].filter(choice => choice !== value);
-				if (newChoices.length === 0) {
-					newChoices.push('All');
+				newEquipment = userData[statePropertyToChange].filter(choice => choice !== value);
+				if (newEquipment.length === 0) {
+					newEquipment.push('All');
 				}
 			} else {
-				newChoices = userData[statePropertyToChange].filter(choice => choice !== 'All' && choice !== 'None');
-				newChoices.push(value);
+				newEquipment = userData[statePropertyToChange].filter(choice => choice !== 'All' && choice !== 'None');
+				newEquipment.push(value);
 			}
 		}
 
-		setUserData({ ...userData, [statePropertyToChange]: newChoices });
-		console.log(newChoices);
+		console.log('Equipment:', newEquipment);
+		setUserData({ ...userData, [statePropertyToChange]: newEquipment });
 	};
 
 	// Close on clicking outside

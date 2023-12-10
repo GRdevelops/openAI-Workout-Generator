@@ -51,14 +51,14 @@ const Exercise = styled.a`
 	}
 `;
 
-function DayTable({ dayName, exercisesOfTheDay }) {
-	const exercises = Object.entries(exercisesOfTheDay.exercises).map(([exerciseName, details], index) => {
-		const dynamicYoutubeLink = `https://www.youtube.com/results?search_query=${encodeURIComponent(exerciseName)}`;
+function DailyTable({ dayName, exercisesObject }) {
+	const exercises = Object.entries(exercisesObject.exercises).map(([exerciseName, details], index) => {
+		const youtubeLinkOfTheExercise = `https://www.youtube.com/results?search_query=${encodeURIComponent(exerciseName)}`;
 
 		return (
 			<Row key={index}>
 				<Exercise
-					href={dynamicYoutubeLink}
+					href={youtubeLinkOfTheExercise}
 					target='_blank'
 					rel='noopener noreferrer'
 					title='Search on Youtube'>
@@ -73,7 +73,7 @@ function DayTable({ dayName, exercisesOfTheDay }) {
 		<Table>
 			<Row>
 				<Day>{dayName}</Day>
-				<StaticInfo>{exercisesOfTheDay.type}</StaticInfo>
+				<StaticInfo>{exercisesObject.type}</StaticInfo>
 			</Row>
 			<Line></Line>
 			<Row>
@@ -85,4 +85,4 @@ function DayTable({ dayName, exercisesOfTheDay }) {
 	);
 }
 
-export default DayTable;
+export default DailyTable;

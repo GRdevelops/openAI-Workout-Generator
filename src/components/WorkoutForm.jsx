@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
@@ -6,7 +5,7 @@ import styled from '@emotion/styled';
 import RadioButton from './WorkoutForm/RadioButton.jsx';
 import MultiSelection from './WorkoutForm/MultiSelection.jsx';
 import Slider from './WorkoutForm/Slider';
-import { Bodyweight, Selection, TextArea } from './WorkoutForm/OtherInputs.jsx';
+import { Number, Selection, TextArea } from './WorkoutForm/OtherInputs.jsx';
 
 // Styles
 import styles from '../styles/theme.js';
@@ -39,7 +38,7 @@ export const Wrapper = styled.div`
 `;
 
 // Component
-function WorkoutForm({ userData, setUserData, onSubmit, isLoading }) {
+function WorkoutForm({ userData, setUserData, handleData, isLoading }) {
 	const equipmentChoices = [
 		'All',
 		'None',
@@ -69,21 +68,18 @@ function WorkoutForm({ userData, setUserData, onSubmit, isLoading }) {
 		'Weight Sled',
 		'Yoga Mat',
 	];
-
 	const fitnessLevels = ['Beginner', 'Intermediate', 'Advanced'];
-
-	const goals = ['Gain Muscle', 'Get Leaner', 'Boost Strength', 'Stay Fit', 'Enhance Stamina']
-
-
+	const goals = ['Gain Muscle', 'Get Leaner', 'Boost Strength', 'Stay Fit', 'Enhance Stamina'];
 
 	const handleSubmit = event => {
 		event.preventDefault();
 		console.log('Submitted:', userData);
-		onSubmit(userData);
+		handleData(userData);
 	};
 
 	return (
 		<Form onSubmit={handleSubmit}>
+			
 			<RadioButton
 				label={'Gender'}
 				optionLeft={'Male'}
@@ -102,7 +98,9 @@ function WorkoutForm({ userData, setUserData, onSubmit, isLoading }) {
 				setUserData={setUserData}
 			/>
 
-			<Bodyweight
+			<Number
+				label='Bodyweight:'
+				statePropertyToChange='bodyweight'
 				userData={userData}
 				setUserData={setUserData}
 			/>
@@ -144,7 +142,7 @@ function WorkoutForm({ userData, setUserData, onSubmit, isLoading }) {
 			{/* Limit characters count to keep costs under control */}
 			<TextArea label='Preferences:' placeholder='Total body, A/B split, HIT, Arms and Chest preference' statePropertyToChange='preferences' userData={userData} maxLength={100} setUserData={setUserData} optional/>
 
-			{/* Avoids multiple api calls in a row */}
+			{/* "disable" avoids sending multiple api calls in a row */}
 			<Button type='submit' disabled={isLoading} css={css` position: sticky; bottom: 1rem`}>Submit</Button>
 
 		</Form>
